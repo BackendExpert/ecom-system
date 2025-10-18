@@ -9,7 +9,6 @@ const RoleService = require("../services/role.service");
 const RoleController = {
     createRole: async (req, res) => {
         try {
-
             const token = req.header("Authorization")?.replace("Bearer ", "");
             if (!token) {
                 return res.status(401).json({ message: "Access denied. No token provided." });
@@ -19,7 +18,7 @@ const RoleController = {
                 rolename
             } = req.body
 
-            const roledto = CreateRoleDTO(rolename, token)
+            const roledto = CreateRoleDTO(token, rolename)
 
             const result = await RoleService.createRole(
                 roledto.token,

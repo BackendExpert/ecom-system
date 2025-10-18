@@ -122,6 +122,8 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // auth route
 // app.use('/api/auth', authRoute)
 
+app.use('/api/auth', authRoute)
+
 // -------------- END routes-----------------------
 
 

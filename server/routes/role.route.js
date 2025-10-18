@@ -13,4 +13,8 @@ router.get('/get-roles', auth, checkPermission(['role:readall']), RoleController
 
 router.get('/get-permission', auth, checkPermission(['permission:manage']), RoleController.getpermissions)
 
+router.delete('/delete-role/:id', auth, checkPermission(['role:delete']), RoleController.deleterole)
+
+router.delete('/delete-permission/:id', auth, checkPermission(['permission:delete']), RoleController.deletepermission)
+
 module.exports = router;

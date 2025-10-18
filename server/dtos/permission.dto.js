@@ -14,3 +14,6 @@ exports.CreatePermissionResDTO = (message = "Permission Created Successfully") =
 exports.GrantPermissionToUserDTO = (token, userid, permissionid) => ({ token, userid, permissionid })
 
 exports.GrantPermissionToUserResDTO = (message="Permission Grant to User Successfully") => ({ success: true, message })
+
+exports.PermissionErrorResDTO = (message = "Something went wrong") => ({ success: false, message })
+

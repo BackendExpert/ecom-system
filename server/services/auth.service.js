@@ -7,6 +7,9 @@ const UserOTP = require("../models/userlog.model")
 
 const logUserAction = require("../utils/others/logUserAction")
 const tokenCreator = require("../utils/tokens/generateToken")
+const {
+    RegistationResDTO
+} = require("../dtos/auth.dto")
 
 const PASSWORD_SULT = 10
 
@@ -123,9 +126,7 @@ class AuthService {
 
         const token = tokenCreator({ email, otp }, "15m");
 
-        return RegistrationResponseDTO(token)
-
-
+        return RegistationResDTO(token)
     }
 }
 

@@ -14,7 +14,8 @@ const sendEmail = require("../utils/email/emailTransporter")
 const {
     RegistationResDTO,
     EmailVerifyResDTO,
-    LoginResDTO
+    LoginResDTO,
+    LogoutResDTO
 } = require("../dtos/auth.dto")
 
 const PASSWORD_SULT = 10
@@ -191,108 +192,140 @@ class AuthService {
     }
 
     static async login(email, password, req) {
-        const user = await User.findOne({ email: email })
+        const user = await User.findOne({ email: email });
 
         if (!user) {
-            throw new Error("User does not exist by given Email Address")
+            throw new Error("User does not exist by given Email Address");
         }
 
-
-        const checkpass = await bcrypt.compare(password, user.password)
+        const checkpass = await bcrypt.compare(password, user.password);
 
         if (!checkpass) {
             const metadata = {
-                ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
-                userAgent: req.headers['user-agent'],
+                ipAddress: req.headers["x-forwarded-for"] || req.socket.remoteAddress,
+                userAgent: req.headers["user-agent"],
                 timestamp: new Date(),
             };
-            await logUserAction(req, "wrong_password", `${user.email} login failed`, metadata, user._id);
-            throw new Error("Given Password is not Match,.. check the Password")
+            await logUserAction(req, "wrong_password", `${email} login failed`, metadata, user._id);
+            throw new Error("Given Password does not match. Please check your password.");
         }
 
-
-        if (user.isEmailVerified === false) {
-            throw new Error("Your email is not Verify...")
+        if (!user.isEmailVerified) {
+            throw new Error("Your email is not verified.");
         }
 
-
-        if (user.isActive === false) {
-            throw new Error("Your Account is not Active...")
+        if (!user.isActive) {
+            throw new Error("Your account is not active.");
         }
 
-        const getuserrole = await Role.findById(user.role)
+        const getuserrole = await Role.findById(user.role);
 
         const token = tokenCreator(
             {
                 id: user._id,
                 email: user.email,
                 username: user.username,
-                role: getuserrole.name
+                role: getuserrole?.name || "User",
             },
-            '1d'
+            "1d"
         );
 
         if (req) {
             const metadata = {
-                ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
-                userAgent: req.headers['user-agent'],
-                timestamp: new Date(),
+                ipAddress: req.headers["x-forwarded-for"] || req.socket.remoteAddress,
+                userAgent: req.headers["user-agent"],
+                timestamp: new Date().toLocaleString(),
             };
+
+            // ✅ Use `user` safely inside same scope
             await logUserAction(req, "login_success", `${user.email} Login Success`, metadata, user._id);
 
+            // ✅ Define FRONTEND_URL or fallback
+            const FRONTEND_URL = process.env.FRONTEND_URL;
+
             await sendEmail({
-                to: email,
+                to: user.email,
                 subject: "🔐 Login Successful | MyMart Account Access",
                 html: `
-                    <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7fdf4; padding: 40px 0;">
-                        <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 35px rgba(0,0,0,0.08);">
-                            
-                            <!-- Header -->
-                            <div style="background: linear-gradient(135deg, #84cc16, #4d7c0f); padding: 28px; text-align: center;">
-                                <h1 style="color: #fff; margin: 0; font-size: 26px; font-weight: 800;">Login Successful ✅</h1>
-                                <p style="color: #d9f99d; margin: 6px 0 0; font-size: 15px;">Welcome back to MyMart, ${username} 🌿</p>
+                <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7fdf4; padding: 40px 0;">
+                    <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 35px rgba(0,0,0,0.08);">
+                        
+                        <!-- Header -->
+                        <div style="background: linear-gradient(135deg, #84cc16, #4d7c0f); padding: 28px; text-align: center;">
+                            <h1 style="color: #fff; margin: 0; font-size: 26px; font-weight: 800;">Login Successful ✅</h1>
+                            <p style="color: #d9f99d; margin: 6px 0 0; font-size: 15px;">Welcome back to MyMart, ${user.username} 🌿</p>
+                        </div>
+
+                        <!-- Body -->
+                        <div style="padding: 35px; color: #333;">
+                            <p style="font-size: 17px; line-height: 1.7; color: #374151; margin-bottom: 22px;">
+                                👋 Hey <strong>${user.username}</strong>, your login to <strong>MyMart</strong> was successful.  
+                                If this was you — awesome! You can continue shopping seamlessly.
+                            </p>
+
+                            <!-- Meta Data Card -->
+                            <div style="background: #ecfccb; border-left: 6px solid #84cc16; border-radius: 10px; padding: 18px 22px; margin: 25px 0;">
+                                <h3 style="margin: 0 0 12px; font-size: 18px; color: #365314;">🔍 Login Details</h3>
+                                <p style="margin: 4px 0; font-size: 15px; color: #4b5563;"><strong>📅 Time:</strong> ${metadata.timestamp}</p>
+                                <p style="margin: 4px 0; font-size: 15px; color: #4b5563;"><strong>💻 Device:</strong> ${metadata.userAgent}</p>
+                                <p style="margin: 4px 0; font-size: 15px; color: #4b5563;"><strong>🌐 IP Address:</strong> ${metadata.ipAddress}</p>
                             </div>
 
-                            <!-- Body -->
-                            <div style="padding: 35px; color: #333;">
-                                <p style="font-size: 17px; line-height: 1.7; color: #374151; margin-bottom: 22px;">
-                                    👋 Hey <strong>${username}</strong>, your login to <strong>MyMart</strong> was successful.  
-                                    If this was you — awesome! You can continue shopping seamlessly.
-                                </p>
+                            <p style="font-size: 15px; color: #6b7280; margin-top: 18px;">
+                                ⚠️ If this login wasn’t you, we recommend 
+                                <a href="${FRONTEND_URL}/reset-password" 
+                                   style="color: #65a30d; text-decoration: none; font-weight: 600;">
+                                   changing your password immediately
+                                </a> to keep your account secure.
+                            </p>
 
-                                <!-- Meta Data Card -->
-                                <div style="background: #ecfccb; border-left: 6px solid #84cc16; border-radius: 10px; padding: 18px 22px; margin: 25px 0;">
-                                    <h3 style="margin: 0 0 12px; font-size: 18px; color: #365314;">🔍 Login Details</h3>
-                                    <p style="margin: 4px 0; font-size: 15px; color: #4b5563;"><strong>📅 Time:</strong> ${metadata.timestamp}</p>
-                                    <p style="margin: 4px 0; font-size: 15px; color: #4b5563;"><strong>💻 Device:</strong> ${metadata.userAgent}</p>
-                                    <p style="margin: 4px 0; font-size: 15px; color: #4b5563;"><strong>🌐 IP Address:</strong> ${metadata.ipAddress}</p>
-                                </div>
+                            <!-- Divider -->
+                            <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;" />
 
-                                <p style="font-size: 15px; color: #6b7280; margin-top: 18px;">
-                                    ⚠️ If this login wasn’t you, we recommend <a href=${FRONTEND_URL} style="color: #65a30d; text-decoration: none; font-weight: 600;">changing your password immediately</a> to keep your account secure.
-                                </p>
+                            <p style="font-size: 15px; color: #475569;">
+                                💚 Stay safe and enjoy a smooth shopping experience on <strong>MyMart</strong> — your trusted online marketplace.
+                            </p>
+                        </div>
 
-                                <!-- Divider -->
-                                <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;" />
-
-                                <p style="font-size: 15px; color: #475569;">
-                                    💚 Stay safe and enjoy a smooth shopping experience on <strong>MyMart</strong> — your trusted online marketplace.
-                                </p>
-                            </div>
-
-                            <!-- Footer -->
-                            <div style="background-color: #f9fafb; padding: 20px; text-align: center; font-size: 13px; color: #9ca3af;">
-                                <p style="margin: 5px 0;">© ${new Date().getFullYear()} MyMart Shopping Site</p>
-                                <p style="margin: 0;">Empowering smarter shopping experiences 🛍️</p>
-                            </div>
+                        <!-- Footer -->
+                        <div style="background-color: #f9fafb; padding: 20px; text-align: center; font-size: 13px; color: #9ca3af;">
+                            <p style="margin: 5px 0;">© ${new Date().getFullYear()} MyMart Shopping Site</p>
+                            <p style="margin: 0;">Empowering smarter shopping experiences 🛍️</p>
                         </div>
                     </div>
-                    `,
+                </div>
+            `,
             });
         }
 
-        return LoginResDTO(token, user)
+        return LoginResDTO(token, user);
     }
+
+    static async logout(token, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        const metadata = {
+            ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+            userAgent: req.headers['user-agent'],
+            timestamp: new Date(),
+        };
+
+        await logUserAction(req, "logout", `User ${user.email} logged out`, metadata, user._id);
+
+        return LogoutResDTO()
+    }
+
 }
 
 module.exports = AuthService

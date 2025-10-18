@@ -7,4 +7,8 @@ router.post('/registation', AuthController.registation)
 
 router.post('/verify-email', AuthController.verifyEmail)
 
+router.post('/login', AuthController.login)
+
+router.post('/logout', AuthController.logout)
+
 module.exports = router;

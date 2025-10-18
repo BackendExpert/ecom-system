@@ -8,7 +8,7 @@ exports.EmailVerifyResDTO = (message = "Account Verification Successful") => ({ 
 
 // login
 exports.LoginDTO = (email, password) => ({ email, password })
-exports.LoginResDTO = (token, message = "Login Success") => ({
+exports.LoginResDTO = (token, user, message = "Login Success") => ({
     success: true,
     token, message,
     user: {

@@ -17,7 +17,8 @@ const {
     LoginResDTO,
     LogoutResDTO,
     ForgetPasswordResDTO,
-    VerifyOTPResDTO
+    VerifyOTPResDTO,
+    UpdatePasswordResDTO
 } = require("../dtos/auth.dto")
 
 const PASSWORD_SULT = 10
@@ -512,7 +513,7 @@ class AuthService {
                 };
                 await logUserAction(req, "password_Updated", `${decoded.email} Password Updated Success`, metadata, user._id);
             }
-            return UpdatePasswordResponseDTO()
+            return UpdatePasswordResDTO()
         }
     }
 

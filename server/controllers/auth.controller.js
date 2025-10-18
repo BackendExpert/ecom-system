@@ -5,7 +5,9 @@ const {
     RegistationDTO,
     EmailVerifyDTO,
     LoginDTO,
-    ForgetPasswordDTO
+    ForgetPasswordDTO,
+    VerifyOTPDTO,
+    UpdatePasswordDTO
 } = require("../dtos/auth.dto");
 
 
@@ -94,8 +96,8 @@ const AuthController = {
         }
     },
 
-    forgetpassword: async(req, res) => {
-        try{
+    forgetpassword: async (req, res) => {
+        try {
             const { email } = req.body
 
             const forgetpassdto = ForgetPasswordDTO(
@@ -108,8 +110,56 @@ const AuthController = {
 
             res.status(200).json(result)
         }
-        catch(err){
-            return res.status(400).json(ErrorResDTO(err.message));            
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    verifyotp: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+
+            const { otp } = req.body
+
+            const otpcheckdto = VerifyOTPDTO(token, otp)
+
+            const result = await AuthService.CheckandVerifyOTP(
+                otpcheckdto.token,
+                otpcheckdto.otp,
+                req
+            )
+            res.status(200).json(result)
+        }
+        catch (err) {
+            res.json({ success: false, error: err.message })
+        }
+    },
+
+    updatePassword: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+
+            const { newpassword } = req.body
+
+            const passwordDto = UpdatePasswordDTO(token, newpassword)
+
+
+            const result = await AuthService.UpdatePassword(
+                passwordDto.token,
+                passwordDto.newpassword,
+                req
+            )
+            res.status(200).json(result)
+
+        }
+        catch (err) {
+            res.json({ success: false, error: err.message })
         }
     }
 };

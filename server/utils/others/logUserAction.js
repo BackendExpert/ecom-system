@@ -1,6 +1,6 @@
 // utils/logUserAction.js
-const Userlogs = require('../../models/Userlogs');
-const User = require('../../models/User');
+const Userlogs = require('../../models/userlog.model');
+const User = require('../../models/user.model');
 const jwt = require('jsonwebtoken');
 
 const logUserAction = async (req, action, description, metadata = {}, userId = null) => {

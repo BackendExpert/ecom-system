@@ -1,8 +1,9 @@
 const AuthService = require("../services/auth.service");
 
-const { 
+const {
     ErrorResDTO,
-    RegistationDTO
+    RegistationDTO,
+    EmailVerifyDTO
 } = require("../dtos/auth.dto");
 
 
@@ -26,6 +27,29 @@ const AuthController = {
 
             res.status(200).json(result)
 
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    verifyEmail: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+            const { otp } = req.body
+
+            const verfiydto = EmailVerifyDTO(token, otp)
+
+            const result = await AuthService.verifyEmail(
+                verfiydto.token,
+                verfiydto.otp,
+                req
+            )
+
+            res.status(200).json(result)
         }
         catch (err) {
             return res.status(400).json(ErrorResDTO(err.message));

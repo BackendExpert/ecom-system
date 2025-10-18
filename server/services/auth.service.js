@@ -12,7 +12,8 @@ const logUserAction = require('../utils/others/logUserAction')
 const tokenCreator = require("../utils/tokens/generateToken")
 const sendEmail = require("../utils/email/emailTransporter")
 const {
-    RegistationResDTO
+    RegistationResDTO,
+    EmailVerifyResDTO
 } = require("../dtos/auth.dto")
 
 const PASSWORD_SULT = 10
@@ -134,6 +135,57 @@ class AuthService {
         const token = tokenCreator({ email, otp }, "15m");
 
         return RegistationResDTO(token)
+    }
+
+    static async verifyEmail(token, otpInput, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        const checkotprecode = await UserOTP.findOne({ email: decoded.email });
+        if (!checkotprecode) throw new Error("OTP Record Not found");
+
+        const otpcheck = await bcrypt.compare(otpInput, checkotprecode.otp);
+        if (!otpcheck) {
+            const metadata = {
+                ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                userAgent: req.headers['user-agent'],
+                timestamp: new Date(),
+            };
+            await logUserAction(req, "Wrong_otp", `${user.email} Adding Wrong OTP when verifing Account`, metadata, user._id);
+
+            throw new Error("OTP does not match");
+        }
+
+        const updateuser = await User.findOneAndUpdate(
+            { email: decoded.email },
+            { $set: { isEmailVerified: true } },
+            { new: true }
+        );
+
+        if (updateuser) {
+            await UserOTP.findOneAndDelete({ email: decoded.email });
+            if (req) {
+                const metadata = {
+                    ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                    userAgent: req.headers['user-agent'],
+                    timestamp: new Date(),
+                };
+                await logUserAction(req, "account_verify", `${decoded.email} Accout Verified`, metadata, user._id);
+            }
+            return EmailVerifyResDTO()
+        } else {
+            throw new Error("Internal Server Error");
+        }
     }
 }
 

@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.post('/registation', AuthController.registation)
 
+router.post('/verify-email', AuthController.verifyEmail)
+
 module.exports = router;

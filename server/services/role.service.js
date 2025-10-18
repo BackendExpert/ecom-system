@@ -108,12 +108,12 @@ class RoleService {
 
     static async getallroles(){
         const getroles = await Role.find()
-        return GetRoleResDTO()
+        return GetRoleResDTO(getroles)
     }
 
     static async getpermissions(roleid){
         const getpermission = await Role.findById(roleid)
-        return GetPermissionForResRole()
+        return GetPermissionForResRole(getpermission)
     }
 }
 

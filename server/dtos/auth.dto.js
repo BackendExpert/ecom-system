@@ -25,14 +25,14 @@ exports.ForgetPasswordResDTO = (token, message = "Email Verification Success, Ve
 
 // verify OTP
 exports.VerifyOTPDTO = (token, otp) => ({ token, otp })
-exports.VerifyOTPResponseDTO = (message ="OTP Verification Success") => ({ success: true, message })
+exports.VerifyOTPResDTO = (message ="OTP Verification Success") => ({ success: true, message })
 
 // update Password
 exports.UpdatePasswordDTO = (token, newpassword) => ({ token, newpassword })
-exports.UpdatePasswordResponseDTO = (message = "Password Updated Successful") => ({ success: true, message })
+exports.UpdatePasswordResDTO = (message = "Password Updated Successful") => ({ success: true, message })
 
 // Logout
-exports.LogoutResponseDTO = (message = "Logout successful") => ({ success: true, message });
+exports.LogoutResDTO = (message = "Logout successful") => ({ success: true, message });
 
 // Error 
 exports.ErrorResDTO = (message = "Something went wrong") => ({ success: false, message })

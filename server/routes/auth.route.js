@@ -13,6 +13,8 @@ router.post('/logout', AuthController.logout)
 
 router.post('/forget-password', AuthController.forgetpassword)
 
+router.post('/verify-otp', AuthController.verifyotp)
 
+router.post('/update-password', AuthController.updatePassword)
 
 module.exports = router;

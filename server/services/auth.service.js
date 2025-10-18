@@ -512,6 +512,59 @@ class AuthService {
                     timestamp: new Date(),
                 };
                 await logUserAction(req, "password_Updated", `${decoded.email} Password Updated Success`, metadata, user._id);
+
+                const FRONTEND_URL = process.env.FRONTEND_URL;
+                await sendEmail({
+                    to: email,
+                    subject: "✅ Password Updated Successfully | MyMart Account",
+                    html: `
+                        <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7fdf4; padding: 40px 0;">
+                            <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+                                
+                                <!-- Header -->
+                                <div style="background: linear-gradient(135deg, #84cc16, #4d7c0f); padding: 28px; text-align: center;">
+                                    <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800;">MyMart 🛒</h1>
+                                    <p style="color: #d9f99d; margin: 6px 0 0; font-size: 15px;">Your trusted shopping companion 🌿</p>
+                                </div>
+
+                                <!-- Body -->
+                                <div style="padding: 35px; color: #333; text-align: center;">
+                                    <div style="font-size: 50px; color: #4d7c0f; margin-bottom: 10px;">🔐</div>
+                                    <h2 style="font-size: 22px; margin-bottom: 12px; color: #365314;">Password Updated Successfully</h2>
+
+                                    <p style="font-size: 16px; line-height: 1.7; margin-bottom: 25px; color: #4b5563;">
+                                        Hello <strong>${existinguser.username}</strong>,<br>
+                                        Your <strong>MyMart</strong> account password has been updated successfully.  
+                                        You can now log in with your new password.
+                                    </p>
+
+                                    <a href='${FRONTEND_URL}/login' 
+                                        style="display: inline-block; padding: 14px 26px; background: linear-gradient(135deg, #84cc16, #4d7c0f);
+                                        color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px;
+                                        box-shadow: 0 4px 10px rgba(132,204,22,0.3); transition: background 0.3s;">
+                                        🔑 Go to MyMart Login
+                                    </a>
+
+                                    <p style="font-size: 15px; color: #6b7280; margin-top: 30px;">
+                                        If you didn’t make this change, please reset your password immediately or contact our support team.
+                                    </p>
+
+                                    <!-- Divider -->
+                                    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 35px 0;" />
+
+                                </div>
+
+                                <!-- Footer -->
+                                <div style="background-color: #f9fafb; padding: 22px; text-align: center; font-size: 13px; color: #9ca3af;">
+                                    <p style="margin: 5px 0;">© ${new Date().getFullYear()} MyMart Shopping Site</p>
+                                    <p style="margin: 0;">Smarter shopping starts here 🌱</p>
+                                </div>
+                            </div>
+                        </div>
+                        `,
+                });
+
+
             }
             return UpdatePasswordResDTO()
         }

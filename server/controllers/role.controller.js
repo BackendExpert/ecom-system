@@ -81,13 +81,20 @@ const RoleController = {
 
     getpermissions: async (req, res) => {
         try {
+
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
             const roleid = req.params.id
 
             const roleperdto = GetPermissionForRole(
+                token,
                 roleid
             )
 
             const result = await RoleService.getpermissions(
+                roleperdto.token,
                 roleperdto.roleid
             )
 
@@ -107,9 +114,10 @@ const RoleController = {
 
             const roleid = req.params.id
 
-            const deleteroledto = DeleteRoleDTO(roleid)
+            const deleteroledto = DeleteRoleDTO(token, roleid)
 
             const result = await RoleService.deleterole(
+                deleteroledto.token,
                 deleteroledto.roleid,
                 req
             )

@@ -11,7 +11,7 @@ router.post('/create-permission/:id', auth, checkPermission(['permission:create'
 
 router.get('/get-roles', auth, checkPermission(['role:readall']), RoleController.getallroles)
 
-router.get('/get-permission', auth, checkPermission(['permission:manage']), RoleController.getpermissions)
+router.get('/get-permission/:id', auth, checkPermission(['permission:manage']), RoleController.getpermissions)
 
 router.delete('/delete-role/:id', auth, checkPermission(['role:delete']), RoleController.deleterole)
 

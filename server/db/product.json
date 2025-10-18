@@ -1,0 +1,452 @@
+[
+    {
+        "_id": {
+            "$oid": "68f3e501b812e9b3c10a7f01"
+        },
+        "itemCode": "BL-001",
+        "name": "BlackAlphaLabs Core Gadget",
+        "regularPrice": 199.99,
+        "salePrice": 149.99,
+        "size": "M",
+        "stock": 50,
+        "SKU": "BAL-CG-001",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e01"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e02"
+            }
+        ],
+        "description": "High-performance gadget from BlackAlphaLabs Core series, ideal for tech enthusiasts.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/core-gadget-1.png",
+            "https://cdn.blackalphalabs.com/products/core-gadget-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e01"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "1.2kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:10:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:10:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3e502b812e9b3c10a7f02"
+        },
+        "itemCode": "BL-002",
+        "name": "BlackAlphaLabs Cloud Hub",
+        "regularPrice": 299.99,
+        "salePrice": 259.99,
+        "size": "L",
+        "stock": 30,
+        "SKU": "BAL-CH-002",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e04"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e06"
+            }
+        ],
+        "description": "Cloud connectivity device from BlackAlphaLabs Cloud series.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/cloud-hub-1.png",
+            "https://cdn.blackalphalabs.com/products/cloud-hub-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e02"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "0.8kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:15:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:15:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3e503b812e9b3c10a7f03"
+        },
+        "itemCode": "BL-003",
+        "name": "BlackAlphaLabs Studio Camera",
+        "regularPrice": 499.99,
+        "salePrice": 449.99,
+        "size": "XL",
+        "stock": 20,
+        "SKU": "BAL-SC-003",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e03"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e09"
+            }
+        ],
+        "description": "Professional camera from BlackAlphaLabs Studio series.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/studio-camera-1.png",
+            "https://cdn.blackalphalabs.com/products/studio-camera-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e03"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "1.5kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:20:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:20:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3e504b812e9b3c10a7f04"
+        },
+        "itemCode": "BL-004",
+        "name": "BlackAlphaLabs OS Console",
+        "regularPrice": 399.99,
+        "salePrice": 349.99,
+        "size": "M",
+        "stock": 25,
+        "SKU": "BAL-OS-004",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e07"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e08"
+            }
+        ],
+        "description": "Operating system console for home and office use.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/os-console-1.png",
+            "https://cdn.blackalphalabs.com/products/os-console-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e04"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "2kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:25:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:25:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3e505b812e9b3c10a7f05"
+        },
+        "itemCode": "BL-005",
+        "name": "BlackAlphaLabs AI Assistant",
+        "regularPrice": 599.99,
+        "salePrice": 549.99,
+        "size": "L",
+        "stock": 15,
+        "SKU": "BAL-AI-005",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e0a"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e06"
+            }
+        ],
+        "description": "AI-powered assistant device for smart homes.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/ai-assistant-1.png",
+            "https://cdn.blackalphalabs.com/products/ai-assistant-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e0b"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "1kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:30:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:30:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3e506b812e9b3c10a7f06"
+        },
+        "itemCode": "BL-006",
+        "name": "BlackAlphaLabs Vision Headset",
+        "regularPrice": 699.99,
+        "salePrice": 649.99,
+        "size": "XL",
+        "stock": 10,
+        "SKU": "BAL-VH-006",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e01"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e03"
+            }
+        ],
+        "description": "Next-gen VR headset from BlackAlphaLabs Vision series.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/vision-headset-1.png",
+            "https://cdn.blackalphalabs.com/products/vision-headset-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e10"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "0.9kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:35:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:35:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3e507b812e9b3c10a7f07"
+        },
+        "itemCode": "BL-007",
+        "name": "BlackAlphaLabs Edge Router",
+        "regularPrice": 349.99,
+        "salePrice": 299.99,
+        "size": "M",
+        "stock": 40,
+        "SKU": "BAL-ER-007",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e02"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e05"
+            }
+        ],
+        "description": "High-speed router for offices and smart homes.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/edge-router-1.png",
+            "https://cdn.blackalphalabs.com/products/edge-router-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e09"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "0.6kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:40:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:40:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3e508b812e9b3c10a7f08"
+        },
+        "itemCode": "BL-008",
+        "name": "BlackAlphaLabs Smart Speaker",
+        "regularPrice": 129.99,
+        "salePrice": 99.99,
+        "size": "S",
+        "stock": 60,
+        "SKU": "BAL-SS-008",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e01"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e02"
+            }
+        ],
+        "description": "Voice-controlled smart speaker with premium sound quality.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/smart-speaker-1.png",
+            "https://cdn.blackalphalabs.com/products/smart-speaker-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e05"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "0.7kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:45:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:45:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3e509b812e9b3c10a7f09"
+        },
+        "itemCode": "BL-009",
+        "name": "BlackAlphaLabs Power Bank",
+        "regularPrice": 49.99,
+        "salePrice": 39.99,
+        "size": "S",
+        "stock": 100,
+        "SKU": "BAL-PB-009",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e03"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e09"
+            }
+        ],
+        "description": "Portable power bank with fast-charging capability.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/power-bank-1.png",
+            "https://cdn.blackalphalabs.com/products/power-bank-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e06"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "0.4kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:50:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:50:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3e50ab812e9b3c10a7f0a"
+        },
+        "itemCode": "BL-010",
+        "name": "BlackAlphaLabs Wireless Charger",
+        "regularPrice": 59.99,
+        "salePrice": 49.99,
+        "size": "S",
+        "stock": 80,
+        "SKU": "BAL-WC-010",
+        "category": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "tags": [
+            {
+                "$oid": "68f3d401b812e9b3c10a7e04"
+            },
+            {
+                "$oid": "68f3d401b812e9b3c10a7e05"
+            }
+        ],
+        "description": "Fast wireless charger compatible with all Qi-enabled devices.",
+        "images": [
+            "https://cdn.blackalphalabs.com/products/wireless-charger-1.png",
+            "https://cdn.blackalphalabs.com/products/wireless-charger-2.png"
+        ],
+        "productType": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "brand": {
+            "$oid": "68f3d101b812e9b3c10a7e07"
+        },
+        "vendor": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "netWeight": "0.3kg",
+        "createdAt": {
+            "$date": "2025-10-18T17:55:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T17:55:00.000Z"
+        },
+        "__v": 0
+    }
+]

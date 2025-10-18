@@ -1,0 +1,132 @@
+[
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e01"
+        },
+        "name": "New Arrival",
+        "createdAt": {
+            "$date": "2025-10-18T16:40:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:40:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e02"
+        },
+        "name": "Best Seller",
+        "createdAt": {
+            "$date": "2025-10-18T16:40:10.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:40:10.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e03"
+        },
+        "name": "Limited Edition",
+        "createdAt": {
+            "$date": "2025-10-18T16:40:20.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:40:20.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e04"
+        },
+        "name": "Trending",
+        "createdAt": {
+            "$date": "2025-10-18T16:40:30.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:40:30.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e05"
+        },
+        "name": "Eco-Friendly",
+        "createdAt": {
+            "$date": "2025-10-18T16:40:40.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:40:40.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e06"
+        },
+        "name": "Popular",
+        "createdAt": {
+            "$date": "2025-10-18T16:40:50.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:40:50.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e07"
+        },
+        "name": "On Sale",
+        "createdAt": {
+            "$date": "2025-10-18T16:41:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:41:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e08"
+        },
+        "name": "Limited Stock",
+        "createdAt": {
+            "$date": "2025-10-18T16:41:10.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:41:10.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e09"
+        },
+        "name": "Exclusive",
+        "createdAt": {
+            "$date": "2025-10-18T16:41:20.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:41:20.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d401b812e9b3c10a7e0a"
+        },
+        "name": "Featured",
+        "createdAt": {
+            "$date": "2025-10-18T16:41:30.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:41:30.000Z"
+        },
+        "__v": 0
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "_id": {
+            "$oid": "68f3b9c4b812e9b3c10a7e52"
+        },
+        "userID": {
+            "$oid": "68f3a813a100e9a32267a8f4"
+        },
+        "name": "JehanKandy",
+        "contactPerson": "Jehan",
+        "phone": "+94 711758851",
+        "email": "jehan@example.com",
+        "address": "ABC, cross Street, XYZ",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T14:30:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T14:30:00.000Z"
+        },
+        "__v": 0
+    }
+]

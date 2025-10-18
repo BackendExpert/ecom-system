@@ -1,0 +1,242 @@
+[
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e01"
+        },
+        "name": "BlackAlphaLabs Core",
+        "logo": "https://cdn.blackalphalabs.com/brands/core.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:40:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:40:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e02"
+        },
+        "name": "BlackAlphaLabs Cloud",
+        "logo": "https://cdn.blackalphalabs.com/brands/cloud.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:40:10.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:40:10.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e03"
+        },
+        "name": "BlackAlphaLabs Studio",
+        "logo": "https://cdn.blackalphalabs.com/brands/studio.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:40:20.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:40:20.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e04"
+        },
+        "name": "BlackAlphaLabs OS",
+        "logo": "https://cdn.blackalphalabs.com/brands/os.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:40:30.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:40:30.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e05"
+        },
+        "name": "BlackAlphaLabs UI",
+        "logo": "https://cdn.blackalphalabs.com/brands/ui.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:40:40.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:40:40.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e06"
+        },
+        "name": "BlackAlphaLabs Docs",
+        "logo": "https://cdn.blackalphalabs.com/brands/docs.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:40:50.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:40:50.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e07"
+        },
+        "name": "BlackAlphaLabs API",
+        "logo": "https://cdn.blackalphalabs.com/brands/api.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:41:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:41:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e08"
+        },
+        "name": "BlackAlphaLabs DevTools",
+        "logo": "https://cdn.blackalphalabs.com/brands/devtools.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:41:10.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:41:10.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e09"
+        },
+        "name": "BlackAlphaLabs Edge",
+        "logo": "https://cdn.blackalphalabs.com/brands/edge.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:41:20.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:41:20.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e0a"
+        },
+        "name": "BlackAlphaLabs Secure",
+        "logo": "https://cdn.blackalphalabs.com/brands/secure.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:41:30.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:41:30.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e0b"
+        },
+        "name": "BlackAlphaLabs AI",
+        "logo": "https://cdn.blackalphalabs.com/brands/ai.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:41:40.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:41:40.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e0c"
+        },
+        "name": "BlackAlphaLabs Lite",
+        "logo": "https://cdn.blackalphalabs.com/brands/lite.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:41:50.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:41:50.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e0d"
+        },
+        "name": "BlackAlphaLabs Hub",
+        "logo": "https://cdn.blackalphalabs.com/brands/hub.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:42:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:42:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e0e"
+        },
+        "name": "BlackAlphaLabs Quantum",
+        "logo": "https://cdn.blackalphalabs.com/brands/quantum.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:42:10.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:42:10.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e0f"
+        },
+        "name": "BlackAlphaLabs Nexus",
+        "logo": "https://cdn.blackalphalabs.com/brands/nexus.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:42:20.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:42:20.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d101b812e9b3c10a7e10"
+        },
+        "name": "BlackAlphaLabs Vision",
+        "logo": "https://cdn.blackalphalabs.com/brands/vision.png",
+        "websiteUrl": "https://www.blackalphalabs.com",
+        "createdAt": {
+            "$date": "2025-10-18T15:42:30.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T15:42:30.000Z"
+        },
+        "__v": 0
+    }
+]

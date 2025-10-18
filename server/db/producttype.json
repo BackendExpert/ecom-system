@@ -1,0 +1,67 @@
+[
+    {
+        "_id": {
+            "$oid": "68f3d2f3b812e9b3c10a7e01"
+        },
+        "name": "Electronics",
+        "createdAt": {
+            "$date": "2025-10-18T16:22:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:22:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d2f3b812e9b3c10a7e02"
+        },
+        "name": "Home Appliances",
+        "createdAt": {
+            "$date": "2025-10-18T16:22:10.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:22:10.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d2f3b812e9b3c10a7e03"
+        },
+        "name": "Furniture",
+        "createdAt": {
+            "$date": "2025-10-18T16:22:20.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:22:20.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d2f3b812e9b3c10a7e04"
+        },
+        "name": "Clothing",
+        "createdAt": {
+            "$date": "2025-10-18T16:22:30.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:22:30.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d2f3b812e9b3c10a7e05"
+        },
+        "name": "Sports & Fitness",
+        "createdAt": {
+            "$date": "2025-10-18T16:22:40.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:22:40.000Z"
+        },
+        "__v": 0
+    }
+]

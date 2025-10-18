@@ -1,0 +1,170 @@
+[
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e01"
+        },
+        "name": "Electronics",
+        "description": "Devices, gadgets, and electronic accessories.",
+        "createdAt": {
+            "$date": "2025-10-18T16:55:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:55:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e02"
+        },
+        "name": "Home Appliances",
+        "description": "Appliances and utilities for the home.",
+        "createdAt": {
+            "$date": "2025-10-18T16:55:10.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:55:10.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e03"
+        },
+        "name": "Furniture",
+        "description": "Indoor and outdoor furniture for all spaces.",
+        "createdAt": {
+            "$date": "2025-10-18T16:55:20.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:55:20.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e04"
+        },
+        "name": "Clothing",
+        "description": "Apparel for men, women, and children.",
+        "createdAt": {
+            "$date": "2025-10-18T16:55:30.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:55:30.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e05"
+        },
+        "name": "Sports & Fitness",
+        "description": "Sporting goods, exercise equipment, and accessories.",
+        "createdAt": {
+            "$date": "2025-10-18T16:55:40.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:55:40.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e06"
+        },
+        "name": "Books",
+        "description": "Fiction, non-fiction, educational books, and magazines.",
+        "createdAt": {
+            "$date": "2025-10-18T16:55:50.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:55:50.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e07"
+        },
+        "name": "Beauty & Personal Care",
+        "description": "Cosmetics, skincare, haircare, and personal hygiene products.",
+        "createdAt": {
+            "$date": "2025-10-18T16:56:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:56:00.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e08"
+        },
+        "name": "Toys & Games",
+        "description": "Toys, puzzles, and games for all ages.",
+        "createdAt": {
+            "$date": "2025-10-18T16:56:10.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:56:10.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e09"
+        },
+        "name": "Automotive",
+        "description": "Car accessories, parts, and automotive tools.",
+        "createdAt": {
+            "$date": "2025-10-18T16:56:20.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:56:20.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e0a"
+        },
+        "name": "Grocery",
+        "description": "Food, beverages, and household essentials.",
+        "createdAt": {
+            "$date": "2025-10-18T16:56:30.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:56:30.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e0b"
+        },
+        "name": "Pet Supplies",
+        "description": "Food, toys, and accessories for pets.",
+        "createdAt": {
+            "$date": "2025-10-18T16:56:40.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:56:40.000Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "68f3d601b812e9b3c10a7e0c"
+        },
+        "name": "Health & Wellness",
+        "description": "Vitamins, supplements, and wellness products.",
+        "createdAt": {
+            "$date": "2025-10-18T16:56:50.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-18T16:56:50.000Z"
+        },
+        "__v": 0
+    }
+]

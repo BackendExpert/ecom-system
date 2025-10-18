@@ -516,7 +516,6 @@ class AuthService {
             return UpdatePasswordResDTO()
         }
     }
-
 }
 
 module.exports = AuthService

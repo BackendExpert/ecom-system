@@ -16,7 +16,8 @@ const {
     EmailVerifyResDTO,
     LoginResDTO,
     LogoutResDTO,
-    ForgetPasswordResDTO
+    ForgetPasswordResDTO,
+    VerifyOTPResDTO
 } = require("../dtos/auth.dto")
 
 const PASSWORD_SULT = 10
@@ -432,6 +433,87 @@ class AuthService {
         }
 
         return ForgetPasswordResDTO(token)
+    }
+
+
+    static async CheckandVerifyOTP(token, otp, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        const checkotprecode = await UserOTP.findOne({ email: decoded.email });
+        if (!checkotprecode) throw new Error("OTP Record Not found");
+
+        const otpcheck = await bcrypt.compare(otp, checkotprecode.otp);
+
+        if (!otpcheck) {
+            const metadata = {
+                ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                userAgent: req.headers['user-agent'],
+                timestamp: new Date(),
+            };
+            await logUserAction(req, "Wrong_otp", `${user.email} Adding Wrong OTP when verifing Password Reset`, metadata, user._id);
+
+            throw new Error("OTP does not match");
+        }
+
+        await UserOTP.findOneAndDelete({ email: decoded.email });
+        if (req) {
+            const metadata = {
+                ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                userAgent: req.headers['user-agent'],
+                timestamp: new Date(),
+            };
+            await logUserAction(req, "OTP_verify_success", `${decoded.email} OTP Verification Success`, metadata, user._id);
+        }
+
+        return VerifyOTPResDTO()
+    }
+
+
+    static async UpdatePassword(token, newpassword, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+
+        const hashpass = await bcrypt.hash(newpassword, 10);
+
+        const updatedUser = await User.findOneAndUpdate(
+            { email: decoded.email },
+            { $set: { password: hashpass } },
+            { new: true }
+        );
+
+        if (updatedUser) {
+            if (req) {
+                const metadata = {
+                    ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                    userAgent: req.headers['user-agent'],
+                    timestamp: new Date(),
+                };
+                await logUserAction(req, "password_Updated", `${decoded.email} Password Updated Success`, metadata, user._id);
+            }
+            return UpdatePasswordResponseDTO()
+        }
     }
 
 }

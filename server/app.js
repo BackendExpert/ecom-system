@@ -7,8 +7,7 @@ const cookieParser = require("cookie-parser");
 const rateLimit = require("express-rate-limit");
 const csrf = require("csurf");
 const morgan = require("morgan");
-const mongoSanitize = require("mongo-sanitize");
-const xss = require("xss-clean");
+const xssClean = require("xss-clean"); 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 require("dotenv").config();
@@ -18,6 +17,7 @@ require("dotenv").config();
 // Import routes
 // Example: const authRoute = require("./routes/authRoute");
 
+const authRoute = require("./routes/auth.route")
 
 // ---------------------- END of Importing Routes
 
@@ -42,23 +42,11 @@ app.use(
 
 // JSON parsing
 app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true })); // Added to handle URL-encoded form data
 app.use(cookieParser());
 app.use(morgan("combined"));
 
 
-// Sanitize incoming data
-// Prevent MongoDB operator injection
-app.use((req, res, next) => {
-    if (req.body) req.body = mongoSanitize(req.body);
-    if (req.params) req.params = mongoSanitize(req.params);
-    next();
-});
-
-// XSS-clean only on body
-app.use((req, res, next) => {
-    if (req.body) req.body = xss(req.body);
-    next();
-});
 
 
 // app.use((req, res, next) => {
@@ -101,17 +89,14 @@ app.use(
 
 
 // ===== CSRF Protection =====
-const csrfProtection = csrf({
-    cookie: true,
-});
-app.use(csrfProtection);
-
-
+// const csrfProtection = csrf({
+//     cookie: true,
+// });
+// app.use(csrfProtection);
 
 
 // ===== Static Files =====
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-
 
 
 // --------------- START routes -------------------
@@ -119,6 +104,8 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // auth route
 // app.use('/api/auth', authRoute)
+
+app.use('/api/auth', authRoute)
 
 // -------------- END routes-----------------------
 
@@ -133,7 +120,6 @@ app.get("/", (req, res) => {
 });
 
 
-
 // ===== Error Handling =====
 app.use((err, req, res, next) => {
     console.error("❌ Error:", err.stack);
@@ -142,7 +128,5 @@ app.use((err, req, res, next) => {
         message: err.message || "Internal Server Error",
     });
 });
-
-
 
 module.exports = app;

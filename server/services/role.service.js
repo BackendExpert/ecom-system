@@ -8,7 +8,9 @@ const {
     CreateRoleResDTO,
     CreatePremissionResDTO,
     GetRoleResDTO,
-    GetPermissionForResRole
+    GetPermissionForResRole,
+    DeleteRoleResDTO,
+    DeletePermissionResDTO
 } = require("../dtos/role.dto");
 
 
@@ -106,14 +108,106 @@ class RoleService {
 
     }
 
-    static async getallroles(){
+    static async getallroles() {
         const getroles = await Role.find()
         return GetRoleResDTO(getroles)
     }
 
-    static async getpermissions(roleid){
+    static async getpermissions(roleid) {
         const getpermission = await Role.findById(roleid)
         return GetPermissionForResRole(getpermission)
+    }
+
+    static async deleterole(token, roleid, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        const checkrole = await Role.findById(roleid).lean();
+        if (!checkrole) {
+            throw new Error(`Role not found with id: ${roleid}`);
+        }
+
+        const systemRoles = ["admin", "staff", "vendor", "buyer"];
+
+        if (systemRoles.includes(checkrole.name)) {
+            if (req) {
+                const metadata = {
+                    ipAddress: req.headers["x-forwarded-for"] || req.socket.remoteAddress,
+                    userAgent: req.headers["user-agent"],
+                    timestamp: new Date(),
+                };
+
+                await logUserAction(
+                    req,
+                    "delete_role_failed",
+                    `${decoded.email} attempted to delete protected role: ${checkrole.name}`,
+                    metadata,
+                    user._id
+                );
+            }
+
+            throw new Error("Cannot delete a default system role.");
+        }
+
+        const roledelete = await Role.findByIdAndDelete(roleid);
+
+        if (roledelete) {
+            if (req) {
+                const metadata = {
+                    ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                    userAgent: req.headers['user-agent'],
+                    timestamp: new Date(),
+                };
+                await logUserAction(req, "delete_role", `${decoded.email} delete role`, metadata, user._id);
+            }
+
+            return DeleteRoleResDTO()
+        }
+    }
+
+    static async deletePermission(token, roleid, permission, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        const updatedRole = await Role.findByIdAndUpdate(
+            roleid,
+            { $pull: { permissions: permission } },
+            { new: true }
+        );
+
+        if (updatedRole) {
+            if (req) {
+                const metadata = {
+                    ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                    userAgent: req.headers['user-agent'],
+                    timestamp: new Date(),
+                };
+                await logUserAction(req, "delete_permission", `${decoded.email} successfully deleted permission ${permission}`, metadata, user._id);
+            }
+
+            return DeletePermissionResDTO()
+        }
+
     }
 }
 

@@ -1,10 +1,9 @@
 const jwt = require("jsonwebtoken")
 
-const logUserAction = require("../utils/others/logUserAction")
-
 const Role = require("../models/role.model");
 const User = require("../models/user.model")
 
+const logUserAction = require("../utils/others/logUserAction")
 const {
     CreateRoleResDTO,
     CreatePremissionResDTO,

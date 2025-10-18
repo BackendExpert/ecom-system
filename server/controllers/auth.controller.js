@@ -134,7 +134,7 @@ const AuthController = {
             res.status(200).json(result)
         }
         catch (err) {
-            res.json({ success: false, error: err.message })
+            return res.status(400).json(ErrorResDTO(err.message));
         }
     },
 
@@ -159,7 +159,7 @@ const AuthController = {
 
         }
         catch (err) {
-            res.json({ success: false, error: err.message })
+            return res.status(400).json(ErrorResDTO(err.message));
         }
     }
 };

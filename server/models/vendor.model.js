@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const vendorSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Role", 
+        ref: "User", 
         required: true
     },
     name: {

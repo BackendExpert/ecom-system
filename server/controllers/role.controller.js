@@ -1,7 +1,8 @@
 const {
     RoleErrorResDTO,
     CreateRoleDTO,
-    CreatePremissionDTO
+    CreatePremissionDTO,
+    GetPermissionForRole
 } = require("../dtos/role.dto");
 const RoleService = require("../services/role.service");
 
@@ -61,6 +62,35 @@ const RoleController = {
 
             res.status(200).json(result)
 
+        }
+        catch (err) {
+            return res.status(400).json(RoleErrorResDTO(err.message));
+        }
+    },
+
+    getallroles: async (req, res) => {
+        try {
+            const result = await RoleService.getallroles()
+            res.status(200).json(result)
+        }
+        catch (err) {
+            return res.status(400).json(RoleErrorResDTO(err.message));
+        }
+    },
+
+    getpermissions: async (req, res) => {
+        try {
+            const roleid = req.params.id
+            
+            const roleperdto = GetPermissionForRole(
+                roleid
+            )
+
+            const result = await RoleService.getpermissions(
+                roleperdto.roleid
+            )
+
+            res.status(200).json(result)
         }
         catch (err) {
             return res.status(400).json(RoleErrorResDTO(err.message));

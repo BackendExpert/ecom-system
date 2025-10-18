@@ -515,7 +515,7 @@ class AuthService {
 
                 const FRONTEND_URL = process.env.FRONTEND_URL;
                 await sendEmail({
-                    to: email,
+                    to: user.email,
                     subject: "✅ Password Updated Successfully | MyMart Account",
                     html: `
                         <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7fdf4; padding: 40px 0;">
@@ -533,7 +533,7 @@ class AuthService {
                                     <h2 style="font-size: 22px; margin-bottom: 12px; color: #365314;">Password Updated Successfully</h2>
 
                                     <p style="font-size: 16px; line-height: 1.7; margin-bottom: 25px; color: #4b5563;">
-                                        Hello <strong>${existinguser.username}</strong>,<br>
+                                        Hello <strong>${user.username}</strong>,<br>
                                         Your <strong>MyMart</strong> account password has been updated successfully.  
                                         You can now log in with your new password.
                                     </p>

@@ -4,7 +4,8 @@ const {
     ErrorResDTO,
     RegistationDTO,
     EmailVerifyDTO,
-    LoginDTO
+    LoginDTO,
+    ForgetPasswordDTO
 } = require("../dtos/auth.dto");
 
 
@@ -90,6 +91,25 @@ const AuthController = {
         }
         catch (err) {
             return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    forgetpassword: async(req, res) => {
+        try{
+            const { email } = req.body
+
+            const forgetpassdto = ForgetPasswordDTO(
+                email
+            )
+
+            const result = await AuthService.ForgetPassword(
+                forgetpassdto.email
+            )
+
+            res.status(200).json(result)
+        }
+        catch(err){
+            return res.status(400).json(ErrorResDTO(err.message));            
         }
     }
 };

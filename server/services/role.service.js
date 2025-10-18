@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken")
 const logUserAction = require("../utils/others/logUserAction")
 
 const Role = require("../models/role.model");
+const User = require("../models/user.model")
 
 const {
     CreateRoleResDTO
@@ -20,6 +21,8 @@ class RoleService {
             }
             throw new Error("Invalid token.");
         }
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
 
         const checkrole = await Role.findOne({ name: rolename })
 
@@ -45,6 +48,23 @@ class RoleService {
 
             return CreateRoleResDTO()
         }
+    }
+
+    static async createPermission(token, roleid, perName) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        
     }
 }
 

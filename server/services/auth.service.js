@@ -1,12 +1,16 @@
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const crypto = require("crypto")
 
 const User = require("../models/user.model")
 const Role = require("../models/role.model")
-const UserOTP = require("../models/userlog.model")
+const UserOTP = require("../models/userotp.model")
 
-const logUserAction = require("../utils/others/logUserAction")
+// const logUserAction = require("../utils/others/logUserAction")
+const logUserAction = require('../utils/others/logUserAction')
+
 const tokenCreator = require("../utils/tokens/generateToken")
+const sendEmail = require("../utils/email/emailTransporter")
 const {
     RegistationResDTO
 } = require("../dtos/auth.dto")
@@ -14,7 +18,7 @@ const {
 const PASSWORD_SULT = 10
 
 class AuthService {
-    static async registation(username, email, password) {
+    static async registation(username, email, password, req) {
         const existUser = await User.findOne({ email: email })
 
         if (existUser) {

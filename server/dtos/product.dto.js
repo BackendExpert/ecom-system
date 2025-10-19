@@ -105,3 +105,4 @@ exports.GetAllProductsResDTO = (result, message="All Products Fetched Successful
 exports.GetOneProductDTO = (token, producutID) => ({ token, producutID })
 exports.GetOneProductResDTO = (result, message="One Product Fetched Successfully") => ({ success: true, result, message })
 
+exports.ProductErrorResDTO = (message = "Something went wrong") => ({ success: false, message })

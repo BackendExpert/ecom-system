@@ -22,3 +22,6 @@ exports.GetAllTagsResDTO = (result, message="All Product Tags Fetched Successful
 exports.GetOneTagDTO = (token, tagid) => ({ token, tagid })
 exports.GetOneTagResDTO = (result, message="One Product Tags Fetched Successfully") => ({ success: true, result, message })
 
+exports.CreateCategoryDTO = (token, catName, catDesc) => ({ token, catName, catDesc })
+exports.CreateCategoryResDTO = (result, message="Product Category Created Successfully") => ({ success: true, message })
+

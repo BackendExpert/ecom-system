@@ -1,4 +1,4 @@
-exports.CreateBrandDTO = (token, brandName) => ({ token, brandName })
+exports.CreateBrandDTO = (token, brandName, logo, weburl) => ({ token, brandName, logo, weburl })
 exports.CreateBrandResDTO = (message = "Brand Created Successfully") => ({ success: true, message })
 
 exports.GetAllBrandsResDTO = (result, message = "All Brands Fetched Successfully") => ({ success: true, result, message })

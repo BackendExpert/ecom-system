@@ -11,7 +11,7 @@ const {
 } = require("../dtos/product.dto");
 
 class ProductService {
-    static async createBrand(token, brandName, req) {
+    static async createBrand(token, brandName, logo, weburl, req) {
         let decoded;
         try {
             decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -30,7 +30,9 @@ class ProductService {
         if (checkBrand) throw new Error("Brand Already Exist");
 
         const newBrand = new Brand({
-            name: brandName
+            name: brandName,
+            logo: logo,
+            websiteUrl: weburl
         })
 
         const resultBrand = await newBrand.save()

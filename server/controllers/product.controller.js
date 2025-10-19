@@ -16,14 +16,24 @@ const ProductController = {
             }
 
             const {
-                brandName
+                brandName,
+                weburl
             } = req.body
 
-            const createbranddto = CreateBrandDTO(token, brandName)
+
+            if (!req.file) {
+                return res.status(400).json(ErrorResponseDTO("File is required"));
+            }
+
+            const uploadfile = req.file.filename;
+
+            const createbranddto = CreateBrandDTO(token, brandName, uploadfile, weburl)
 
             const result = await ProductService.createBrand(
                 createbranddto.token,
                 createbranddto.brandName,
+                createbranddto.file,
+                createbranddto.weburl,
                 req
             )
 

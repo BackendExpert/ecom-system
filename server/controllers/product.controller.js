@@ -69,6 +69,15 @@ const ProductController = {
         catch (err) {
             return res.status(400).json(ProductErrorResDTO(err.message));
         }
+    },
+
+    createProductTag: async(req, res) => {
+        try{
+            
+        }
+        catch(err){
+            return res.status(400).json(ProductErrorResDTO(err.message));            
+        }
     }
 };
 

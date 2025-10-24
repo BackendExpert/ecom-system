@@ -5,13 +5,15 @@ const User = require("../models/user.model")
 const Brand = require("../models/brand.model");
 const ProductType = require("../models/productType.model")
 const Tag = require("../models/tag.model")
+const Category = require('../models/category.model')
 
 const {
     CreateBrandResDTO,
     CreateProductTypeResDTO,
     GetAllBrandsResDTO,
     GetAllProductTypesResDTP,
-    CreateTagResDTO
+    CreateTagResDTO,
+    CreateCategoryResDTO
 } = require("../dtos/product.dto");
 
 class ProductService {
@@ -138,6 +140,45 @@ class ProductService {
 
             return CreateTagResDTO()
         }
+    }
+
+    static async CreateProductCategory(token, pcName, pcdesc, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        const checktag = await Category.findOne({ name: pcName })
+        if (checktag) throw new Error("Category Already Exist");
+
+        const newCategory = new Category({
+            name: pcName,
+            description: pcdesc,
+        })
+
+        const resultCreateCategory = await newCategory.save()
+
+        if (resultCreateCategory) {
+            if (req) {
+                const metadata = {
+                    ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                    userAgent: req.headers['user-agent'],
+                    timestamp: new Date(),
+                };
+                await logUserAction(req, "product_category_create", `${decoded.email} Created product Category`, metadata, user._id);
+            }
+
+            return CreateCategoryResDTO()
+        }
+
     }
 
 }

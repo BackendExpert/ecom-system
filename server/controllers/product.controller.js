@@ -2,7 +2,8 @@ const {
     ProductErrorResDTO,
     CreateBrandDTO,
     CreateProductTypeDTO,
-    CreateTagDTO
+    CreateTagDTO,
+    CreateCategoryDTO
 } = require("../dtos/product.dto");
 
 const ProductService = require("../services/product.service");
@@ -98,11 +99,33 @@ const ProductController = {
         }
     },
 
-    createCategory: async(req, res) => {
-        try{
-            
+    createCategory: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+            const {
+                pcName,
+                pcDesc
+            } = req.body
+
+            const catadto = CreateCategoryDTO(
+                token,
+                pcName,
+                pcDesc
+            )
+
+            const result = await ProductService.createCategory(
+                catadto.token,
+                catadto.catName,
+                catadto.catDesc,
+                req
+            )
+
+            res.status(200).json(result)
         }
-        catch(err){
+        catch (err) {
             return res.status(400).json(ProductErrorResDTO(err.message));
         }
     }

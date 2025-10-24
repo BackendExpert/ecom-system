@@ -96,6 +96,15 @@ const ProductController = {
         catch (err) {
             return res.status(400).json(ProductErrorResDTO(err.message));
         }
+    },
+
+    createCategory: async(req, res) => {
+        try{
+            
+        }
+        catch(err){
+            return res.status(400).json(ProductErrorResDTO(err.message));
+        }
     }
 };
 

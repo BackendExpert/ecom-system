@@ -10,4 +10,6 @@ router.post('/create-brand', auth, checkPermission(['create:brand']), upload.sin
 
 router.post('/create-producttype', auth, checkPermission(['create:producttype']), ProductController.createProductType)
 
+router.post('/create-producttag', auth, checkPermission(['create:producttag']), ProductController.createProductTag)
+
 module.exports = router;

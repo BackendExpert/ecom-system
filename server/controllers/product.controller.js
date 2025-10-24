@@ -1,7 +1,8 @@
 const {
     ProductErrorResDTO,
     CreateBrandDTO,
-    CreateProductTypeDTO
+    CreateProductTypeDTO,
+    CreateTagDTO
 } = require("../dtos/product.dto");
 
 const ProductService = require("../services/product.service");
@@ -71,12 +72,29 @@ const ProductController = {
         }
     },
 
-    createProductTag: async(req, res) => {
-        try{
-            
+    createProductTag: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+            const {
+                ptName
+            } = req.body
+
+            const produttagdto = CreateTagDTO(token, ptName)
+
+            const result = await ProductService.CreateProductTag(
+                produttagdto.token,
+                produttagdto.tagName,
+                req
+            )
+
+            res.status(200).json(result)
+
         }
-        catch(err){
-            return res.status(400).json(ProductErrorResDTO(err.message));            
+        catch (err) {
+            return res.status(400).json(ProductErrorResDTO(err.message));
         }
     }
 };
